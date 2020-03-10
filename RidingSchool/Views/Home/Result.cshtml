@@ -1,0 +1,13 @@
+﻿@model RidingSchool.Models.PersonData;
+@{
+    ViewData["title"] = "Resultat";
+}
+
+<h1>Resultat</h1>
+<p>
+    Hej @Html.DisplayFor(model => model.Name)!<br />
+    Du red hästen @Html.DisplayFor(model => model.HorseName) idag och tyckte att lektionen gick @Html.DisplayFor(model => model.RateTodaysRidinglesson)
+</p>
+<p>
+    @ViewBag.text
+</p>

@@ -1,0 +1,12 @@
+﻿@model RidingSchool.Models.PersonData
+@{
+    ViewData["title"] = "Häst";
+}
+
+<h1>Hästsidan</h1>
+<p>Hej @Html.DisplayFor(model => model.Name)!</p>
+<p>Du kommer få rida på @Html.DisplayFor(model => model.HorseName)!</p>
+
+<div class="separator"></div>
+
+<a asp-action="Review">Tryck här när du ridit klart</a>

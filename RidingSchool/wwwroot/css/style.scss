@@ -1,0 +1,586 @@
+﻿@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css?family=Libre+Franklin:400,700|Raleway:400,600,700|Roboto+Slab:400,700');
+
+//RESET
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+//EGET
+i, em {
+    font-style: italic;
+}
+
+b, strong {
+    font-weight: bold;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    color: inherit;
+    background-color: inherit;
+    display: inline-block;
+    border: none;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+}
+
+button:focus {
+    outline: none;
+    outline-offset: 0;
+}
+
+input[type="radio"] {
+    margin: 0;
+    padding: 0;
+}
+//END RESET
+
+//START
+$color1: #147bfe; //header, footer, boxshadow form, submitbuttons, toggle borders, toggle text
+$color2: #000000; //links, sub menues, footer hover
+$color3: #000000; //background toggle
+$color4: whitesmoke; //backgroundcolor
+$color5: #fff; //text footer, text submitbutton
+$color6: #fff; //menu
+$color7: orange; //hover
+
+$textColor: #2f2c2c;
+$boxColor: #fefbfd; //box, form
+$buttonColor: #d6f7fa;
+$buttonTextColor: grey;
+$shadow: 2px 3px 5px darkgrey;
+
+$font1: 'Roboto Slab', 'Times', serif; //headings
+$font2: 'Raleway', 'Verdana', sans-serif; //textfont
+$font3: 'Libre Franklin', 'Verdana', sans-serif; //menu, footer, toggle, image
+
+//MEDIA QUERIES
+@mixin mq($mqValue...) {
+    @if length($mqValue) == 1 {
+        @media screen and (max-width: nth($mqValue, 1)) {
+            @content;
+        }
+    }
+
+    @if length($mqValue) == 2 {
+        @media screen and (max-width: nth($mqValue, 1)) and (min-width: nth($mqValue, 2)) {
+            @content;
+        }
+    }
+
+    @if length($mqValue) == 3 {
+        @media screen and (min-width: nth($mqValue, 3)) {
+            @content;
+        }
+    }
+}
+
+
+
+//STANDARD
+html {
+    font-size: 62.5%;
+    height: 100%;
+}
+
+body {
+    background-color: $color4;
+    height: 100%;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: $font1;
+    line-height: 1.6;
+}
+
+h1 {
+    font-size: 2.8rem;
+}
+
+h2 {
+    font-size: 2rem;
+    line-height: 1.4;
+    padding-bottom: 0.8rem;
+}
+
+h3 {
+    font-size: 1.9rem;
+    margin-top: 1rem;
+    line-height: 1.4;
+    padding-bottom: 0.6rem;
+}
+
+h4 {
+    font-size: 1.5rem;
+    line-height: 1.3;
+    font-weight: 600;
+    padding-bottom: 0.8rem;
+}
+
+h5 {
+    font-size: 1.3rem;
+    font-family: $font2;
+    padding-right: 1rem;
+}
+
+h6 {
+    font-size: 1.4rem;
+}
+
+p, a, ul, li {
+    font-family: $font2;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    color: $textColor;
+    padding-bottom: 1.5rem;
+}
+
+p {
+    @include mq(340px) {
+        line-height: 1.6;
+    }
+}
+
+i, em {
+    font-style: italic;
+}
+
+b, strong {
+    font-weight: bold;
+}
+
+//LISTS
+ol {
+    list-style-type: decimal;
+    list-style-position: inside;
+}
+
+ol li {
+    font-family: $font2;
+    font-size: 1.5rem;
+    line-height: 1.8;
+}
+
+
+//LINKS
+a {
+    color: $color2;
+}
+
+a:hover {
+    color: $color7;
+    text-decoration: underline;
+}
+
+
+
+//Gör så att footern hamnar längst ned/ följer med sidan
+#container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+
+//SURROUNDS
+.wrapper {
+    margin: 2.5rem 6rem;
+
+    @include mq(340px) {
+        margin: 2.5rem 4rem;
+    }
+}
+
+
+
+//TOP OF PAGE
+header {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    background-color: $color1;
+    height: 100px;
+    padding: 2rem 0 2rem 0;
+    position: relative;
+    top: 0px;
+
+    @include mq(340px) {
+        display: block;
+    }
+}
+
+#logo {
+    height: 80px;
+    margin-left: 3.5rem;
+
+    @include mq(340px) {
+        float: left;
+        padding-top: 1rem;
+    }
+}
+
+#companyName {
+    height: 60px;
+    margin: 2rem 0 0 2rem;
+
+    @include mq(340px) {
+        margin-top: 150px;
+        background-color: rgba(255,69,0, 0.3);
+        border: 0.5rem solid black;
+        display: none;
+    }
+}
+
+
+//DESKTOPMENU
+#desktopNav {
+    margin-left: auto;
+
+    @include mq(1280px, 961px) {
+        margin-right: 1.5rem;
+    }
+
+    @include mq(960px) {
+        display: none;
+    }
+
+    ul {
+        display: flex;
+        flex-flow: row wrap;
+    }
+
+    li {
+        @include mq(1, 1, 1281px) {
+            padding-right: 3rem;
+        }
+    }
+
+    a {
+        font-family: $font3;
+        font-size: 2rem;
+        font-weight: 700;
+        color: $color6;
+        align-items: bottom;
+        padding: 1.5rem;
+    }
+
+    a:hover {
+        color: $color7;
+        text-decoration: none;
+    }
+}
+
+
+
+//BURGERMENU
+#burgerImage {
+    margin-left: auto;
+    padding-right: 5%;
+    height: 30px;
+    cursor: pointer;
+
+    @include mq(1, 1, 961px) {
+        display: none;
+    }
+
+    @include mq(340px) {
+        float: right;
+        padding-right: 5%;
+        padding-top: 3.5rem;
+    }
+}
+
+.toggleNavigation {
+
+    @include mq(1, 1, 961px) {
+        display: none;
+    }
+
+    ul {
+        display: block;
+        overflow: hidden;
+        list-style: none;
+        background: $color3;
+        text-transform: uppercase;
+        width: 100%;
+        height: 0;
+    }
+    //Visar menyvalen med JavaScript
+    ul.open {
+        height: auto;
+    }
+
+    li {
+        float: none;
+        font-family: $font2;
+        text-align: right;
+        font-size: 1.7rem;
+    }
+
+    a:link, a:visited, a:hover {
+        display: block;
+        border-bottom: 0.1em solid $color1;
+        color: $color1;
+        padding-right: 2rem;
+        padding-top: 1.5rem;
+        text-decoration: none;
+
+        @include mq(960px, 751px) {
+            padding-right: 4rem;
+        }
+
+        @include mq(750px, 500px) {
+            padding-right: 3rem;
+        }
+
+        @include mq(340px) {
+            padding-right: 1.4rem;
+        }
+    }
+}
+
+
+//MIDDLE OF PAGE
+//Startpage
+
+
+
+
+//FOOTER
+//Ger hela footern färg även när bredden minskas
+#footerWrapper {
+    background-color: $color1;
+    flex-shrink: 0;
+}
+
+#footer {
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row wrap;
+    margin: 0 6rem;
+    padding: 2rem 0;
+    color: $color5;
+
+    @include mq(1, 1, 751px) {
+        flex-direction: row;
+    }
+
+    @include mq(340px) {
+        display: block;
+        margin: 0 4rem;
+    }
+
+    ul li {
+        font-family: $font3;
+        font-size: 1.3rem;
+        line-height: 1.5;
+
+        @include mq(340px) {
+            padding: 0.3rem;
+        }
+    }
+    //Mailadressen
+    a {
+        font-family: $font3;
+        font-size: 1.3rem;
+        text-decoration: underline;
+    }
+
+    a:hover {
+        color: $color7;
+    }
+}
+
+#footerLeft, #footerRight {
+
+    @include mq(1, 1, 751px) {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 40%;
+    }
+}
+
+#footerRight {
+
+    @include mq(340px) {
+        text-align: left;
+        padding-top: 0.3rem;
+    }
+}
+
+
+
+//OTHER
+//Rensar efter floats
+.clear {
+    clear: both;
+}
+
+.clearNone {
+    clear: none;
+}
+
+//Ger mellanrum mellan textstycken
+.separator {
+    height: 3rem;
+}
+
+//Mindre mellanrum + smalt streck
+.smallSeparator {
+    height: 0.1rem;
+    background-color: $color1;
+    margin: 2rem;
+}
+
+
+//FORM
+form {
+    background-color: $boxColor;
+    padding: 2rem 4rem;
+    margin: 0;
+    border-radius: 0.5rem;
+
+    p {
+        padding-bottom: 0.8rem;
+        line-height: 1.3;
+    }
+}
+
+input, label, select, textarea {
+    font-family: $font2;
+    font-size: 1.3rem;
+    color: $textColor;
+}
+
+label {
+    line-height: 1.5;
+    padding-bottom: 1.5rem;
+}
+
+textarea {
+    border: 1px solid hsla(217, 25.9%, 28%, 0.6);
+    border-radius: 0.5rem;
+    width: 95%;
+    height: 10rem;
+    box-shadow: 2px 3px 5px darkgrey;
+}
+
+input,
+input[type="text"] {
+    width: 100%;
+    height: 3.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid $color1;
+    padding-left: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+input[type="checkbox"] {
+    box-shadow: 1px 2px 2px darkgrey;
+}
+
+input[type="radio"] {
+    width: auto;
+    margin-right: 1rem;
+}
+
+
+.baseButton {
+    padding: 1.5rem;
+    margin: 1rem;
+    font-size: 1.8rem;
+    border-radius: 0.5rem;
+    box-shadow: 2px 3px 5px darkgrey;
+    cursor: pointer;
+}
+
+input[type="submit"],
+button[type="submit"] {
+    @extend .baseButton;
+    background: $color1;
+    color: $color6;
+}
+
+button[type="button"] {
+    @extend .baseButton;
+    background: $buttonColor;
+    color: $buttonTextColor;
+}
+
+//TABLES
+dt, dd {
+    @extend p;
+    display: inline-block;
+}
+
+dt {
+    font-weight: 700;
+}
+
+th, td {
+    @extend p;
+}
+
+th {
+    font-weight: 700;
+}
+
+//IMAGES

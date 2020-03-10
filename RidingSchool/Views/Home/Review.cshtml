@@ -1,0 +1,19 @@
+﻿@model List<SelectListItem>
+@{
+    ViewData["title"] = "Review";
+}
+
+<h1>Utvärdering av lektionen</h1>
+<p>Hur gick ridlektionen?</p>
+
+<form asp-action="Result" method="post">
+
+    @foreach (SelectListItem item in Model)
+    {
+        <p>
+            <input type="radio" name="RateTodaysRidinglesson" value="@Html.DisplayFor(model => item.Value)">@item.Text<br />
+        </p>
+    }
+    <input type="submit" value="Lämna recension" />
+
+</form>

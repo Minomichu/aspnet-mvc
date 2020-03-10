@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewData["title"]</title>
+    <link rel="stylesheet" href="~/css/style.css" />
+
+
+    <!--<title>snabela ViewBag.Title</title> -->
+</head>
+<body>
+    <div id="container">
+        <header>
+            <nav id="desktopNav">
+                <ul>
+                    <li>
+                        <a asp-controller="Home" asp-action="Index">Startsida</a>
+                    </li>
+                    <li>
+                        <a asp-controller="Home" asp-action="Horse">Vilken häst</a>
+                    </li>
+                    <li>
+                        <a asp-controller="Home" asp-action="Review">Utvärdering</a>
+                    </li>
+                    <li>
+                        <a asp-controller="Home" asp-action="Result">Resultat</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <div class="wrapper">
+                @RenderBody()
+            </div>
+        </main>
+    </div> <!-- end container -->
+</body>
+</html>
