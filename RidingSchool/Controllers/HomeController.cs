@@ -79,9 +79,6 @@ namespace RidingSchool.Controllers
 
             rider.RateTodaysRidinglesson = reviewList[rateLesson].Text;
 
-            sessionstring = JsonConvert.SerializeObject(rider);
-            HttpContext.Session.SetString("somesession", sessionstring);
-
             ViewBag.text = "Tips: Sitt lite rakare i ryggen nästa gång!";
 
             return View(rider);
